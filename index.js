@@ -5,7 +5,8 @@ for( let i = 0; i < numberOfDrumButtons; i++){
         console.log(event )
      let buttonInnerHtml = this.innerHTML
             makeSound(buttonInnerHtml)
-            });
+            buttonAnimatio(buttonInnerHtml)
+    });
 }
 
 
@@ -13,6 +14,7 @@ document.addEventListener("keydown", function(event){
     console.log(event.key, " has been pressed")
     let keyPressed = event.key
     makeSound(keyPressed)
+    buttonAnimatio(keyPressed)
 })
 
 function makeSound(key){
@@ -50,4 +52,14 @@ function makeSound(key){
         default:
             console.log(key)
     }
+}
+
+function buttonAnimatio(currentKey){
+    let activeButton = document.querySelector("."+currentKey)
+        activeButton.classList.add("pressed")
+    console.log(activeButton)
+
+    setTimeout(function(){
+        activeButton.classList.remove("pressed")
+    }, 100)
 }
